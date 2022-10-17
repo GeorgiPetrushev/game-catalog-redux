@@ -6,8 +6,10 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers/combineReducers";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
-const store = configureStore({ reducer: rootReducer });
+
+const store = configureStore({ reducer: rootReducer ,thunk});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
