@@ -1,14 +1,25 @@
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 
 const GameDetails = () => {
   const { game, screen ,isLoading } = useSelector((state) => state.detail);
+  const navigate = useNavigate();
+
+  const closeDetailComponent = (e) => {
+    const element = e.target;
+    if(element.classList.contains("shadow")){
+      navigate("/");
+    }
+  }
 
   return (
     <>
     {!isLoading && (
-    <CardShadow>
+    <CardShadow onClick={closeDetailComponent} className="shadow">
+
       <Detail>
         <Stats>
           <div className="card-header">
