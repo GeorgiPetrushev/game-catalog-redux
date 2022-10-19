@@ -10,3 +10,5 @@ export const getDetailsURL = (id) =>
   `https://api.rawg.io/api/games/${id}.json?&key=${process.env.REACT_APP_CATALOG}`;
 export const gameScreenshotURL = (id) =>
   `https://api.rawg.io/api/games/${id}/screenshots?&key=${process.env.REACT_APP_CATALOG}`;
+export const searchGameURL = (gameName) =>
+  `https://api.rawg.io/api/games?key=${process.env.REACT_APP_CATALOG}&search=${gameName}&page_size=9`;
