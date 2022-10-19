@@ -10,13 +10,14 @@ const Game = ({ game }) => {
   const loadDetailHandler = () => {
     dispatch(loadDetail(game.id));
   };
+  const idToString = game.id.toString()
 
   return (
-    <GameStyled onClick={loadDetailHandler}>
+    <GameStyled layoutId={idToString} onClick={loadDetailHandler}>
       <Link to={`/game/${game.id}`}>
-        <h3>{game.name}</h3>
+        <motion.h3 layoutId={`tittle ${idToString}`}>{game.name}</motion.h3>
         <p>{game.released}</p>
-        <img src={game.background_image} alt={game.name}></img>
+        <motion.img layoutId={`img ${idToString}`} src={game.background_image} alt={game.name}></motion.img>
       </Link>
     </GameStyled>
   );

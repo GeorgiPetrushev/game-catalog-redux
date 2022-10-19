@@ -2,53 +2,88 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+//Import game icons
+import {
+  FaPlaystation,
+  FaXbox,
+  FaAppStoreIos,
+  FaGamepad,
+} from "react-icons/fa";
+import { MdComputer } from "react-icons/md";
+import { SiNintendoswitch } from "react-icons/si";
 
-
-const GameDetails = () => {
-  const { game, screen ,isLoading } = useSelector((state) => state.detail);
+const GameDetails = ({ pathId }) => {
+  const { game, screen, isLoading } = useSelector((state) => state.detail);
   const navigate = useNavigate();
 
   const closeDetailComponent = (e) => {
     const element = e.target;
-    if(element.classList.contains("shadow")){
+    if (element.classList.contains("shadow")) {
       navigate("/");
     }
-  }
+  };
+
+  //get game icon function
+  const getIcon = (gameName) => {
+    switch (gameName) {
+      case "PlayStation 4":
+        return <FaPlaystation />;
+      case "PlayStation 5":
+        return <FaPlaystation />;
+      case "Xbox One":
+        return <FaXbox />;
+      case "Nintendo Switch":
+        return <SiNintendoswitch />;
+      case "PC":
+        return <MdComputer />;
+      case "iOS":
+        return <FaAppStoreIos />;
+
+      default:
+        return <FaGamepad />;
+    }
+  };
 
   return (
     <>
-    {!isLoading && (
-    <CardShadow onClick={closeDetailComponent} className="shadow">
-
-      <Detail>
-        <Stats>
-          <div className="card-header">
-            <h2>{game.name}</h2>
-            <p> Rating:{game.rating}</p>
-          </div>
-          <Platforms>
-            <h3>Platforms</h3>
-            <PlatformsIcons>
-              {game.platforms.map((data) => (
-                <h3 key={data.platform.id}>{data.platform.name}</h3>
+      {!isLoading && (
+        <CardShadow onClick={closeDetailComponent} className="shadow">
+          <Detail layoutId={pathId}>
+            <Stats>
+              <div className="card-header">
+                <motion.h2 layoutId={`tittle ${pathId}`}>{game.name}</motion.h2>
+                <p> Rating:{game.rating}</p>
+              </div>
+              <Platforms>
+                <h3>Platforms</h3>
+                <PlatformsIcons>
+                  {game.platforms.map((data) => (
+                    <h3 key={data.platform.id} className="icon">
+                      {getIcon(data.platform.name)}
+                    </h3>
+                  ))}
+                </PlatformsIcons>
+              </Platforms>
+            </Stats>
+            <Media>
+              <motion.img
+                layoutId={`img ${pathId}`}
+                src={game.background_image}
+                alt={game.name}
+              ></motion.img>
+            </Media>
+            <Description>
+              {" "}
+              <p>{game.description_raw}</p>
+            </Description>
+            <div className="gallery">
+              {screen.results.map((data) => (
+                <img src={data.image} alt={data.id} key={data.id}></img>
               ))}
-            </PlatformsIcons>
-          </Platforms>
-        </Stats>
-        <Media>
-          <img src={game.background_image} alt={game.name}></img>
-        </Media>
-        <Description>
-          {" "}
-          <p>{game.description_raw}</p>
-        </Description>
-        <div className="gallery">
-          {screen.results.map((data) => (
-            <img src={data.image} alt={data.id} key={data.id}></img>
-          ))}
-        </div>
-      </Detail>
-    </CardShadow>)}
+            </div>
+          </Detail>
+        </CardShadow>
+      )}
     </>
   );
 };
@@ -105,8 +140,12 @@ const Platforms = styled(motion.div)`
 const PlatformsIcons = styled(motion.div)`
   display: flex;
   justify-content: space-between;
+  font-size: 1.4rem;
   img {
     margin-left: 3rem;
+  }
+  .icon{
+    margin-left: 10px;
   }
 `;
 
