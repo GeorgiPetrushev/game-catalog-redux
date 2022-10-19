@@ -36,14 +36,25 @@ const Home = () => {
         {searched.length ? (
           <div>
             {" "}
-            <h1>Searched Game</h1>
+            <StyleSearchTittle>
+              <h1>Searched Game</h1>
+              <button
+                onClick={() => {
+                  dispatch({ type: "CLEAR_SEARCH" });
+                }}
+              >
+                clear search
+              </button>
+            </StyleSearchTittle>
             <Games>
               {searched.map((game) => (
                 <Game game={game} key={game.id} />
               ))}
             </Games>
           </div>
-        ) : ""}
+        ) : (
+          ""
+        )}
 
         <h1>Upcoming Games</h1>
         <Games>
@@ -78,8 +89,28 @@ const GameList = styled(motion.div)`
 const Games = styled(motion.div)`
   min-height: 80vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 6rem 3rem;
+`;
+
+const StyleSearchTittle = styled(motion.div)`
+display:flex;
+justify-content:space-between;
+align-items: center;
+button{
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  height: 3rem;
+  border: none;
+  background-color: rgba(0,0,0,0.7);
+  color: rgba(255,255,255);
+  transition: 1000ms;
+  &:hover{
+    background-color: rgba(0,0,0,1);
+    padding: 0 4rem;
+  }
+  
+}
 `;
 
 export default Home;

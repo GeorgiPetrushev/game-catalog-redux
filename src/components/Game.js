@@ -32,9 +32,13 @@ const GameStyled = styled(motion.div)`
   border-radius: 1rem;
   overflow: hidden;
   cursor: pointer;
+  &:hover{
+    transform: scale(1.03);
+  }
+
   img {
     width: 100%;
-    height: 40vh;
+    height: 30vh;
   }
 `;
 
