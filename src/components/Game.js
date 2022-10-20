@@ -14,7 +14,7 @@ const Game = ({ game }) => {
 
   return (
     <GameStyled layoutId={idToString} onClick={loadDetailHandler}>
-      <Link to={`/game/${game.id}`}>
+      <Link to={`/game-catalog-redux/game/${game.id}`}>
         <motion.h3 layoutId={`tittle ${idToString}`}>{game.name}</motion.h3>
         <p>{game.released}</p>
         <motion.img layoutId={`img ${idToString}`} src={game.background_image} alt={game.name}></motion.img>

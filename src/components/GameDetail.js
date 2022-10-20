@@ -19,7 +19,7 @@ const GameDetails = ({ pathId }) => {
   const closeDetailComponent = (e) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
-      navigate("/");
+      navigate("/game-catalog-redux");
     }
   };
 
