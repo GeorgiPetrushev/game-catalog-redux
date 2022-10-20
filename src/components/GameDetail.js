@@ -13,7 +13,7 @@ import { MdComputer } from "react-icons/md";
 import { SiNintendoswitch } from "react-icons/si";
 
 const GameDetails = ({ pathId }) => {
-  const { game, screen, isLoading } = useSelector((state) => state.detail);
+  const { game, screen, store, isLoading } = useSelector((state) => state.detail);
   const navigate = useNavigate();
 
   const closeDetailComponent = (e) => {
@@ -65,6 +65,7 @@ const GameDetails = ({ pathId }) => {
                 </PlatformsIcons>
               </Platforms>
             </Stats>
+            <StyleLink href={store.results[0].url} target="_blank">Buy Now</StyleLink>
             <Media>
               <motion.img
                 layoutId={`img ${pathId}`}
@@ -150,8 +151,21 @@ const PlatformsIcons = styled(motion.div)`
   }
 `;
 
+const StyleLink = styled(motion.a)`
+
+background-color:rgba(184,45,0,0.6);
+padding: 0.5rem 1rem;
+color: rgba(255,255,255,1);
+transition: 700ms;
+&:hover{
+  background-color:rgba(184,45,0,1);
+  border-radius: 0.5rem;
+}
+
+`;
+
 const Media = styled(motion.div)`
-  margin-top: 5rem;
+  margin-top: 3rem;
   img {
     width: 100%;
   }
