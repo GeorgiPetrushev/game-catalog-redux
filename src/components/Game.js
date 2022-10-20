@@ -15,7 +15,7 @@ const Game = ({ game }) => {
   return (
     <GameStyled layoutId={idToString} onClick={loadDetailHandler}>
       <Link to={`/game-catalog-redux/game/${game.id}`}>
-        <motion.h3 layoutId={`tittle ${idToString}`}>{game.name}</motion.h3>
+        <StyleTittleGame layoutId={`tittle ${idToString}`}>{game.name}</StyleTittleGame>
         <p>{game.released}</p>
         <motion.img layoutId={`img ${idToString}`} src={game.background_image} alt={game.name}></motion.img>
       </Link>
@@ -40,6 +40,11 @@ const GameStyled = styled(motion.div)`
     width: 100%;
     height: 30vh;
   }
+`;
+const StyleTittleGame = styled(motion.div)`
+  height: 2rem;
+  font-size: 1.3rem;
+  padding: 1rem 0rem;
 `;
 
 export default Game;
