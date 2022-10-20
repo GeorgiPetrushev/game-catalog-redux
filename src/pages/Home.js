@@ -19,7 +19,7 @@ const Home = () => {
 
   // get current location
   const location = useLocation();
-  const path = location.pathname.split("/")[2];
+  const path = location.pathname.split("/")[3];
 
   //get data on loading the page
   useEffect(() => {
