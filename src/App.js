@@ -9,8 +9,8 @@ function App() {
       <BrowserRouter>
       <Nav />
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="/game/:id" element={<Home />}></Route>
+          <Route path="/game-catalog-redux" element={<Home />}>
+            <Route path="/game-catalog-redux/game/:id" element={<Home />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
