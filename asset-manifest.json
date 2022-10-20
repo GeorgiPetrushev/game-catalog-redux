@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/game-catalog-redux/static/css/main.8b458426.css",
+    "main.js": "/game-catalog-redux/static/js/main.8b9060b2.js",
+    "index.html": "/game-catalog-redux/index.html",
+    "main.8b458426.css.map": "/game-catalog-redux/static/css/main.8b458426.css.map",
+    "main.8b9060b2.js.map": "/game-catalog-redux/static/js/main.8b9060b2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b458426.css",
+    "static/js/main.8b9060b2.js"
+  ]
+}
